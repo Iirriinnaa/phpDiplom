@@ -1,52 +1,96 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $title; ?>Авторизация</title>
+    <!-- Рћ СЃРёСЃС‚РµРјРµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ-->
+    <title><?= $title; ?></title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
-
-
-<!-- Меню navbar -->
+<!-- РњРµРЅСЋ navbar -->
 <nav class="navbar navbar-default">
-    <!-- Бренд и переключатель, который вызывает меню на мобильных устройствах -->
+    <!-- Р‘СЂРµРЅРґ Рё РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЊ, РєРѕС‚РѕСЂС‹Р№ РІС‹Р·С‹РІР°РµС‚ РјРµРЅСЋ РЅР° РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІР°С… -->
     <div class="navbar-header">
-        <!-- Кнопка с полосочками, которая открывает меню на мобильных устройствах -->
+        <!-- РљРЅРѕРїРєР° СЃ РїРѕР»РѕСЃРѕС‡РєР°РјРё, РєРѕС‚РѕСЂР°СЏ РѕС‚РєСЂС‹РІР°РµС‚ РјРµРЅСЋ РЅР° РјРѕР±РёР»СЊРЅС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІР°С… -->
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <!-- Бренд или логотип фирмы (обычно содержит ссылку на главную страницу) -->
-        <a href="/" class="navbar-brand">Test-ISTU</a>
+        <!-- Р‘СЂРµРЅРґ РёР»Рё Р»РѕРіРѕС‚РёРї С„РёСЂРјС‹ (РѕР±С‹С‡РЅРѕ СЃРѕРґРµСЂР¶РёС‚ СЃСЃС‹Р»РєСѓ РЅР° РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ) -->
+        <a href="#" class="navbar-brand">Test-ISTU</a>
     </div>
-    <!-- Содержимое меню (коллекция навигационных ссылок, формы и др.) -->
+    <!-- РЎРѕРґРµСЂР¶РёРјРѕРµ РјРµРЅСЋ (РєРѕР»Р»РµРєС†РёСЏ РЅР°РІРёРіР°С†РёРѕРЅРЅС‹С… СЃСЃС‹Р»РѕРє, С„РѕСЂРјС‹ Рё РґСЂ.) -->
     <div class="collapse navbar-collapse" id="main-menu" >
-        <!-- Список ссылок, расположенных слева -->
+        <!-- РЎРїРёСЃРѕРє СЃСЃС‹Р»РѕРє, СЂР°СЃРїРѕР»РѕР¶РµРЅРЅС‹С… СЃР»РµРІР° -->
         <ul class="nav navbar-nav">
-            <!--Элемент с классом active отображает ссылку подсвеченной <li class="active">-->
-            <li><a href="/">Главная <span class="sr-only">(current)</span></a></li>
-            <li><a href="../TestList.php">Список тестов</a></li>
-            <li><a href="../about.html">О системе тестирования</a></li>
+            <!--Р­Р»РµРјРµРЅС‚ СЃ РєР»Р°СЃСЃРѕРј active РѕС‚РѕР±СЂР°Р¶Р°РµС‚ СЃСЃС‹Р»РєСѓ РїРѕРґСЃРІРµС‡РµРЅРЅРѕР№ <li class="active">-->
+            <li><a href="../main/main.html">Р“Р»Р°РІРЅР°СЏ <span class="sr-only">(current)</span></a></li>
+            <li><a href="../test_list/test_list.html">РЎРїРёСЃРѕРє С‚РµСЃС‚РѕРІ</a></li>
+            <li class="active"><a href="../about/about.html">Рћ СЃРёСЃС‚РµРјРµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
         </ul>
-        <!-- Список ссылок, расположенный справа -->
+        <!-- РЎРїРёСЃРѕРє СЃСЃС‹Р»РѕРє, СЂР°СЃРїРѕР»РѕР¶РµРЅРЅС‹Р№ СЃРїСЂР°РІР° -->
         <ul class="nav navbar-nav navbar-right">
-			<?php
-			if (Users::checkAuth()) {
-				echo '<li class="active"><a href="/стр пользователя">' . $_SESSION['login'] . '</a></li>';
-			} else {
-				?>
-				<li><a href="/Login.php">Войти</a></li>
-				<li class="active"><a href="/registration.php">Зарегистрироваться</a></li>
-				<?php
-			}
-			?>
-            
+            <?php
+            if (Users::checkAuth()) {
+                echo '<li class="active"><a href="/">' . $_SESSION['login'] . '</a></li>';
+            } else {
+                ?>
+                <li><a href="/Login.php">Р’РѕР№С‚Рё</a></li>
+                <li class="active"><a href="/registration.php">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a></li>
+                <?php
+            }
+            ?>
+
         </ul>
     </div>
 </nav>
+
+
+</body>
+</html>
+
+
+<!--<!-- пїЅпїЅпїЅпїЅ navbar -->-->
+<!--<nav class="navbar navbar-default">-->
+<!--    <!-- пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->-->
+<!--    <div class="navbar-header">-->
+<!--        <!-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -->-->
+<!--        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">-->
+<!--            <span class="sr-only">Toggle navigation</span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--            <span class="icon-bar"></span>-->
+<!--        </button>-->
+<!--        <!-- пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) -->-->
+<!--        <a href="/" class="navbar-brand">Test-ISTU</a>-->
+<!--    </div>-->
+<!--    <!-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ.) -->-->
+<!--    <div class="collapse navbar-collapse" id="main-menu" >-->
+<!--        <!-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ -->-->
+<!--        <ul class="nav navbar-nav">-->
+<!--            <!--пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ active пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ <li class="active">-->-->
+<!--            <li><a href="/">пїЅпїЅпїЅпїЅпїЅпїЅпїЅ <span class="sr-only">(current)</span></a></li>-->
+<!--            <li><a href="../TestList.php">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</a></li>-->
+<!--            <li><a href="../about.html">пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>-->
+<!--        </ul>-->
+<!--        <!-- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ -->-->
+<!--        <ul class="nav navbar-nav navbar-right">-->
+<!--			--><?php
+//			if (Users::checkAuth()) {
+//                    echo '<li class="active"><a href="/пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ">' . $_SESSION['login'] . '</a></li>';
+//			} else {
+//				?>
+<!--				<li><a href="/Login.php">пїЅпїЅпїЅпїЅпїЅ</a></li>-->
+<!--				<li class="active"><a href="/registration.php">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>-->
+<!--				--><?php
+//			}
+//			?>
+<!--            -->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
